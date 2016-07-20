@@ -37,7 +37,10 @@ class BerryGame(Experiment):
 
     def create_network(self):
         """Use the Empty network."""
-        return Empty()
+        return DiscreteGenerational(
+            generations=self.generations,
+            generation_size=self.generation_size,
+            initial_source=True)
 
     def attention_check(self, participant):
         """Check that the data are acceptable."""
