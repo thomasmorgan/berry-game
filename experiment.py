@@ -1,11 +1,14 @@
 """Pilot experiment for the berry game."""
 
 from wallace.experiments import Experiment
-from wallace.models import Info
-from wallace.networks import Empty
+from wallace.models import Info, Node
+from wallace.networks import DiscreteGenerational
+from wallace.nodes import Agent, Source
+from wallace.information import Gene
 from sqlalchemy import Integer, Float, Boolean
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.sql.expression import cast
+import random
 
 
 class BerryPilot(Experiment):
