@@ -1,0 +1,46 @@
+td {
+    width: 200px;
+    text-align: center;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+table {
+	margin: auto;
+}
+
+.berry_div {
+	position: relative;
+	height: 400px;
+	width: 400px;
+	margin: auto;
+}
+
+.small_berry {
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	top: 0;
+	left: 0;
+}
+
+.tip_berry {
+    top: 100px;
+}
+
+.big_berry {
+	position: absolute;
+	height: 400px;
+	width: 400px;
+	top: 0;
+	left: 0;
+}
+
+.img_row {
+	height: 200px;
+}
+
+.buffer_row {
+	height: 50px;
+}
