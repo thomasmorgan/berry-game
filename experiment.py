@@ -1,4 +1,4 @@
-"""Pilot experiment for the berry game."""
+"""Experiment for the berry game."""
 
 from wallace.experiments import Experiment
 from wallace.models import Info, Node
@@ -11,7 +11,7 @@ from sqlalchemy.sql.expression import cast
 import random
 
 
-class BerryPilot(Experiment):
+class BerryGame(Experiment):
     """Define the structure of the experiment."""
 
     def __init__(self, session):
@@ -20,7 +20,7 @@ class BerryPilot(Experiment):
         A few properties are then overwritten.
         Finally, setup() is called.
         """
-        super(BerryPilot, self).__init__(session)
+        super(BerryGame, self).__init__(session)
         self.experiment_repeats = 1
         self.initial_recruitment_size = 3
         self.known_classes["Decision"] = Decision
