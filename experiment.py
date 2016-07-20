@@ -42,6 +42,8 @@ class BerryGame(Experiment):
             generation_size=self.generation_size,
             initial_source=True)
 
+    def create_node(self, participant, network):
+        return BerryAgent(network=network, participant=participant)
     def attention_check(self, participant):
         """Check that the data are acceptable."""
         infos = participant.infos()
@@ -66,6 +68,18 @@ class BerryGame(Experiment):
 
         return round(min(max((score - 0.5) * 2, 0), 1), 2)
 
+
+class BerryAgent(Agent):
+
+    __mapper_args__ = {"polymorphic_identity": "berry_agent"}
+
+    def _what(self):
+        return Gene
+
+    def update(self, infos):
+        for i in infos:
+            if isinstance(i, Gene):
+                self.mutate(i)
 
 class Decision(Info):
     """A decision."""
