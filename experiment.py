@@ -22,10 +22,13 @@ class BerryGame(Experiment):
         """
         super(BerryGame, self).__init__(session)
         self.experiment_repeats = 1
-        self.initial_recruitment_size = 3
         self.known_classes["Decision"] = Decision
         self.min_acceptable_performance = 1.00
         self.num_trials = 120
+        self.generation_size = 40
+        self.generations = 40
+        self.initial_recruitment_size = self.generation_size
+        self.initial_gene_value = 0.5
         self.setup()
 
     def recruit(self):
