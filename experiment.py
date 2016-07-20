@@ -52,6 +52,12 @@ class BerryGame(Experiment):
 
     def create_node(self, participant, network):
         return BerryAgent(network=network, participant=participant)
+
+    def add_node_to_network(self, node, network):
+        """Add a node to a network."""
+        network.add_node(node)
+        node.receive()
+
     def attention_check(self, participant):
         """Check that the data are acceptable."""
         infos = participant.infos()
