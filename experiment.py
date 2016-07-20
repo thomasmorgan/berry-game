@@ -30,6 +30,14 @@ class BerryGame(Experiment):
         self.initial_recruitment_size = self.generation_size
         self.initial_gene_value = 0.5
         self.setup()
+        self.create_sources()
+
+    def create_sources(self):
+        if not Node.query.first():
+            for net in self.networks():
+                source = BerrySource(network=net)
+                source.create_information(
+                    value=self.initial_gene_value)
 
     def recruit(self):
         """pass."""
@@ -80,6 +88,26 @@ class BerryAgent(Agent):
         for i in infos:
             if isinstance(i, Gene):
                 self.mutate(i)
+
+
+class BerrySource(Source):
+
+    __mapper_args__ = {"polymorphic_identity": "berry_source"}
+
+    def _what(self):
+        return Info
+
+    def create_information(self, value):
+        BerryGene(origin=self, contents=value)
+
+
+class BerryGene(Gene):
+
+    __mapper_args__ = {"polymorphic_identity": "berry_gene"}
+
+    def _mutated_contents(self):
+        return repr(max(min(float(self.contents) + random.random()*0.1 - 0.05, 1.0), 0.0))
+
 
 class Decision(Info):
     """A decision."""
