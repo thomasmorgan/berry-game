@@ -42,7 +42,7 @@ create_agent = function() {
         type: 'json',
         success: function (resp) {
             my_node_id = resp.node.id;
-            present_stimulus();
+            get_gene();
         },
         error: function (err) {
             console.log(err);
@@ -55,6 +55,28 @@ create_agent = function() {
             }
         }
     });
+};
+
+get_gene = function() {
+    reqwest({
+        url: "/node/" + my_node_id + "/infos",
+        method: 'get',
+        type: 'json',
+        success: function (resp) {
+            my_gene = parseFloat(resp.infos[0].contents);
+            start_training();
+        },
+        error: function (err) {
+            err_response = JSON.parse(err.response);
+            if (err_response.hasOwnProperty('html')) {
+                $('body').html(err_response.html);
+            }
+        }
+    });
+};
+
+start_training = function() {
+    $("#title").html("These are training berries");
 };
 
 present_stimulus = function() {
