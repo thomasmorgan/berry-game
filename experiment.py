@@ -1,7 +1,7 @@
 """Experiment for the berry game."""
 
 from dallinger.experiments import Experiment
-from dallinger.models import Info, Node
+from dallinger.models import Info, Node, Participant
 from dallinger.networks import DiscreteGenerational
 from dallinger.nodes import Agent, Source
 from dallinger.information import Gene
@@ -40,11 +40,13 @@ class BerryGame(Experiment):
                     value=self.initial_gene_value)
 
     def recruit(self):
-        """pass."""
-        pass
+        """Recruit participants if necessary."""
+        if len(Participant.query.filter_by(status="approved")) % self.generation_size == 0:
+            self.log("generation finished, recruiting another")
+            self.recruiter().recruit_participants(n=self.generation_size)
 
     def create_network(self):
-        """Use the Empty network."""
+        """Use the DiscreteGenerational network."""
         return DiscreteGenerational(
             generations=self.generations,
             generation_size=self.generation_size,
