@@ -41,7 +41,7 @@ class BerryGame(Experiment):
 
     def recruit(self):
         """Recruit participants if necessary."""
-        if len(Participant.query.filter_by(status="approved")) % self.generation_size == 0:
+        if len(Participant.query.filter_by(status="approved").all()) % self.generation_size == 0:
             self.log("generation finished, recruiting another")
             self.recruiter().recruit_participants(n=self.generation_size)
 
