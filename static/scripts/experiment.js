@@ -13,6 +13,28 @@ insert_berry_number = function() {
     });
 };
 
+insert_num_training_berries = function() {
+    reqwest({
+        url: "/experiment/training_berries",
+        method: 'get',
+        type: 'json',
+        success: function (resp) {
+            $(".num_training_berries").html(resp.training_berries);
+        },
+    });
+};
+
+insert_num_test_berries = function() {
+    reqwest({
+        url: "/experiment/test_berries",
+        method: 'get',
+        type: 'json',
+        success: function (resp) {
+            $(".num_test_berries").html(resp.test_berries);
+        },
+    });
+};
+
 start_trials = function() {
     reqwest({
         url: "/experiment_property/num_trials",

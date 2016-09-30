@@ -23,14 +23,19 @@ class BerryGame(Experiment):
         Finally, setup() is called.
         """
         super(BerryGame, self).__init__(session)
-        self.experiment_repeats = 1
-        self.known_classes["Decision"] = Decision
-        self.min_acceptable_performance = 1.00
-        self.num_trials = 120
+        # properties read from config.txt
+        self.experiment_repeats = config.networks
+        self.training_berries = config.training_berries
+        self.test_berries = config.test_berries
         self.generation_size = config.generation_size
         self.generations = config.generations
+
+        # other properties
+        self.known_classes["Decision"] = Decision
+        self.min_acceptable_performance = 1.00
         self.initial_recruitment_size = self.generation_size
         self.initial_gene_value = 0.5
+
         self.setup()
         self.create_sources()
 

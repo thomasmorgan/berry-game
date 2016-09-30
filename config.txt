@@ -1,4 +1,7 @@
 [Experiment Configuration]
+networks = 10
+training_berries = 10
+test_berries = 5
 generation_size = 40
 generations = 40
 mode = deploy
