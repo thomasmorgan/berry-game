@@ -1,10 +1,10 @@
 """Experiment for the berry game."""
 
-from wallace.experiments import Experiment
-from wallace.models import Info, Node
-from wallace.networks import DiscreteGenerational
-from wallace.nodes import Agent, Source
-from wallace.information import Gene
+from dallinger.experiments import Experiment
+from dallinger.models import Info, Node
+from dallinger.networks import DiscreteGenerational
+from dallinger.nodes import Agent, Source
+from dallinger.information import Gene
 from sqlalchemy import Integer, Float, Boolean
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.sql.expression import cast
@@ -15,7 +15,7 @@ class BerryGame(Experiment):
     """Define the structure of the experiment."""
 
     def __init__(self, session):
-        """Call the same function in the super (see experiments.py in wallace).
+        """Call the same function in the super (see experiments.py in dallinger).
 
         A few properties are then overwritten.
         Finally, setup() is called.
