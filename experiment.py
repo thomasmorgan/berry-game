@@ -1,5 +1,6 @@
 """Experiment for the berry game."""
 
+from dallinger.config import experiment_configuration as config
 from dallinger.experiments import Experiment
 from dallinger.models import Info, Node, Participant
 from dallinger.networks import DiscreteGenerational
@@ -25,8 +26,8 @@ class BerryGame(Experiment):
         self.known_classes["Decision"] = Decision
         self.min_acceptable_performance = 1.00
         self.num_trials = 120
-        self.generation_size = 40
-        self.generations = 40
+        self.generation_size = config.generation_size
+        self.generations = config.generations
         self.initial_recruitment_size = self.generation_size
         self.initial_gene_value = 0.5
         self.setup()

@@ -1,4 +1,6 @@
 [Experiment Configuration]
+generation_size = 40
+generations = 40
 mode = deploy
 auto_recruit = false
 
