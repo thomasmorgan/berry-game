@@ -1,6 +1,7 @@
 """Experiment for the berry game."""
 
-from dallinger.config import experiment_configuration as config
+from dallinger import config as cfg
+config = cfg.experiment_configuration
 from dallinger.experiments import Experiment
 from dallinger.models import Info, Node, Participant
 from dallinger.networks import DiscreteGenerational
